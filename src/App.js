@@ -8,17 +8,31 @@ import NavLeft from "./components/NavLeft";
 import NavRouter from "./components/NavRouter";
 import { Provider } from "react-redux";
 import store from "./store";
+import { useEffect, useState } from "react";
+import LoadingScreen from "./components/LoadingScreen";
 function App() {
+  const [loading, setLoading] = useState(false);
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+  }, []);
+
   return (
-    <Provider store={store}>
-      <div className="App ">
-        <Cover />
-        <div className="relative">
-          <NavLeft />
-          <ShowArea />
-        </div>
-      </div>
-    </Provider>
+    <div className="App">
+      {loading ? (
+        <LoadingScreen />
+      ) : (
+        <Provider store={store}>
+          <Cover />
+          <div className="relative">
+            <NavLeft />
+            <ShowArea />
+          </div>
+        </Provider>
+      )}
+    </div>
   );
 }
 

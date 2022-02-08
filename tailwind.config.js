@@ -9,13 +9,18 @@ module.exports = {
     animation: {
       "move-left": "moveLeft 5s ease-in-out infinite alternate",
       "move-right": "moveRight 5s ease-in-out infinite alternate",
+      loading: "loading  1.5s infinite ease",
     },
     keyframes: {
       moveLeft: {
         "100%": { transform: "translateX(20px)" },
       },
+
       moveRight: {
         "100%": { transform: "translateX(-20px)" },
+      },
+      loading: {
+        "50%": { transform: "translateX(196px)" },
       },
     },
     extend: {},
